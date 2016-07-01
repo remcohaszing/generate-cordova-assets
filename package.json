@@ -7,5 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Remco Haszing <remcohaszing@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.0.0-rc.6",
+    "phantomjs-prebuilt": "^2.1.7"
+  }
 }
