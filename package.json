@@ -2,12 +2,20 @@
   "name": "generate-cordova-assets",
   "version": "1.0.0",
   "description": "Automatically generate assets for a Cordova based project.",
-  "main": "index.js",
+  "main": "generate-cordova-assets.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Remco Haszing <remcohaszing@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/remcohaszing/generate-cordova-assets.git"
+  },
+  "bugs": {
+    "url": "https://github.com/remcohaszing/generate-cordova-assets/issues"
+  },
+  "homepage": "https://github.com/remcohaszing/generate-cordova-assets#readme",
   "dependencies": {
     "async": "^2.0.0-rc.6",
     "phantomjs-prebuilt": "^2.1.7"
