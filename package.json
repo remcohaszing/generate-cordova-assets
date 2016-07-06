@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/remcohaszing/generate-cordova-assets#readme",
   "dependencies": {
-    "async": "^2.0.0-rc.6",
-    "phantomjs-prebuilt": "^2.1.7"
+    "async": "^2.0.0-rc.6"
+  },
+  "peerDependencies": {
+    "phantomjs-prebuilt": "*"
   }
 }
