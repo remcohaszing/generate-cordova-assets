@@ -4,7 +4,7 @@
   "description": "Automatically generate assets for a Cordova based project.",
   "main": "generate-cordova-assets.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint --max-warnings 0 ."
   },
   "author": "Remco Haszing <remcohaszing@gmail.com>",
   "license": "MIT",
