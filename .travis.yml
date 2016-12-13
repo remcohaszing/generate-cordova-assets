@@ -1,3 +1,11 @@
 language: node_js
 node_js:
 - node
+deploy:
+  provider: npm
+  email: remcohaszing@gmail.com
+  api_key:
+    secure: aReDw5vx87uTmBJ7RKQ6vPD+XxWwX31LDyFASc+hCSnNBfl9dSXAgw/tng2cUdUoaGrYGiltxmx/xemSr4hjT16f6Gtu3B/Fig/9EkCcS7T9nuMb8iF9BC6oma4qMlK10ZeZL+H7NHOQuqQkZBPbt6bkDOSO99fA3rh/HQcR9ebeCFNUTZbEUpz+0Hu4bi23PAfKFeV66bn5XjUXiPauAei7/yD44jComwNW+n/1MjVDzrvj47vSdOicYt98GIF+vbvWW6grCkpd0VkJ6a499qw9tkW89NLlnBbMMlyrcSKeZQZVFXLo6MkPPOKerivORV/pZJ64p5BOw3jmLsQHnaYqdZ3L+G2tXBDJYjiene4bBS0Npqi60wklJyr8BmTCjFSvMcHvxgQcQNXHh9AUzfIyyif2r1Y0Ni5/qm017kO4pIQiCr33SEunfw0/m7Ik4UhCiv/2NoV1pmP92EbDycXLeTijD2joCkP4wSoWsvwoTPfM1j9mV/jdEgYTxjj8nQFOPstdjGt2EujN23pB+Pz618g/KrFSYz3+ZNXVMnzz7TpwebG16UGrIfI+j5G8eKVriEmWLylWVxkNZGRQkHHkRUlGfvOPV+kZ0jqdUbNyrOboXq1mSEmZi0Pd++HC3PpfAy48JZQQuqsphJoQxM4buqYo3fr7RQ7FFJA3GQQ=
+  on:
+    tags: true
+    repo: remcohaszing/generate-cordova-assets
