@@ -17,78 +17,8 @@ const path = require('path');
 
 const phantomjs = require('phantomjs-prebuilt');
 
-
-/**
- * Convert splash screen densities into pixel sizes.
- *
- * https://github.com/phonegap/phonegap/wiki/App-Icon-Sizes
- */
-function iconDensityToSize(icon) {
-  if (icon.density) {
-    const size = {
-      ldpi: 36,
-      mdpi: 48,
-      hdpi: 72,
-      xhdpi: 96,
-      xxhdpi: 144,
-      xxxhdpi: 192,
-    }[icon.density];
-    return Object.assign({}, icon, {
-      width: size,
-      height: size,
-    });
-  }
-  return icon;
-}
-
-
-/**
- * Convert splash screen densities into pixel sizes.
- *
- * https://github.com/phonegap/phonegap/wiki/App-Splash-Screen-Sizes
- */
-function splashScreenDensityToSize(splashScreen) {
-  if (splashScreen.density) {
-    const sizes = {
-      ldpi: {
-        width: 200,
-        height: 320,
-      },
-      mdpi: {
-        width: 320,
-        height: 480,
-      },
-      hdpi: {
-        width: 480,
-        height: 800,
-      },
-      xhdpi: {
-        width: 720,
-        height: 1280,
-      },
-      xxhdpi: {
-        width: 960,
-        height: 1600,
-      },
-      xxxhdpi: {
-        width: 1280,
-        height: 1920,
-      },
-    };
-    const match = splashScreen.density.match(/^(?:(land|port)(?=-)|)-?((?:l|m|(?:x{0,3})h)dpi)$/);
-    const orientation = match[1] || 'port';
-    const density = match[2];
-    const size = sizes[density];
-    switch (orientation) {
-      case 'land':
-        return Object.assign({}, splashScreen, { width: size.height, height: size.width });
-      case 'port':
-      default:
-        return Object.assign({}, splashScreen, size);
-    }
-  }
-  return splashScreen;
-}
+const util = require('./lib/util');
+const transparentIcons = require('./lib/transparent-icons');
 
 
 module.exports = (context) => {
@@ -100,27 +30,19 @@ module.exports = (context) => {
   const backgroundColor = config.getPreference('IconBackgroundColor') || 'white';
   const sourceFile = config.getPreference('IconSource');
 
-  function setIconBackground(icon) {
-    if (['android'].indexOf(icon.platform) === -1) {
-      Object.assign({}, icon, { backgroundColor });
-    } else {
-      Object.assign({}, icon, { backgroundColor: 'rgba(0, 0, 0, 0)' });
-    }
-    return icon;
-  }
-
-  function setSplashScreenBackground(splashScreen) {
-    return Object.assign({}, splashScreen, { backgroundColor });
-  }
-
   const images = [];
   context.opts.cordova.platforms.forEach((platform) => {
     images.push(...config.getIcons(platform)
-        .map(iconDensityToSize)
-        .map(setIconBackground));
+        .map(icon => util.processIconDensity(icon))
+        .map((icon) => {
+          if (transparentIcons.indexOf(platform) === -1) {
+            return util.setBackground(icon, backgroundColor);
+          }
+          return util.setBackground(icon, 'rgba(0, 0, 0, 0)');
+        }));
     images.push(...config.getSplashScreens(platform)
-        .map(splashScreenDensityToSize)
-        .map(setSplashScreenBackground));
+        .map(splashScreen => util.processSplashScreenDensity(splashScreen))
+        .map(splashScreen => util.setBackground(splashScreen, backgroundColor)));
   });
   console.log(`Generating ${images.length} images...`);
   return superspawn.spawn(phantomjs.path, [
