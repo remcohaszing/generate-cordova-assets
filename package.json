@@ -17,15 +17,15 @@
   },
   "homepage": "https://github.com/remcohaszing/generate-cordova-assets#readme",
   "dependencies": {
-    "async": "^2.0.0-rc.6"
-  },
-  "peerDependencies": {
-    "phantomjs-prebuilt": "*"
+    "jimp": "^0.2.27",
+    "mkdirp-then": "^1.2.0",
+    "pn": "^1.0.0",
+    "svg2png": "^4.1.0",
+    "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
     "eslint": "^3.12.1",
     "eslint-config-airbnb-base": "^11.0.0",
-    "eslint-plugin-import": "^2.2.0",
-    "phantomjs-prebuilt": "2.1.7"
+    "eslint-plugin-import": "^2.2.0"
   }
 }
