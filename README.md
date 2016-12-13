@@ -1,5 +1,9 @@
 # generate-cordova-assets
 
+[![NPM version][npm-image]][npm-url]
+[![build status][travis-image]][travis-url]
+[![Downloads][downloads-image]][downloads-url]
+
 > Automatically generate assets for a Cordova based project.
 
 This provides a Cordova hook which can automatically generate icons and splash screens from a single source.
@@ -73,3 +77,11 @@ No extra configuration is needed. The hook will automatically detect which icons
 ###### Why not any of the other hooks on npm?
 
 The other hooks I found don't support SVG or splash screens or require extra configurations.
+
+
+[npm-image]: https://img.shields.io/npm/v/generate-cordova-assets.svg
+[npm-url]: https://www.npmjs.com/package/generate-cordova-assets
+[travis-image]: https://img.shields.io/travis/remcohaszing/generate-cordova-assets.svg
+[travis-url]: https://travis-ci.org/remcohaszing/generate-cordova-assets
+[downloads-image]: https://img.shields.io/npm/dm/generate-cordova-assets.svg
+[downloads-url]: https://www.npmjs.com/package/generate-cordova-assets
