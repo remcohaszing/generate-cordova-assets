@@ -1,6 +1,6 @@
 {
   "name": "generate-cordova-assets",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Automatically generate assets for a Cordova based project.",
   "main": "generate-cordova-assets.js",
   "scripts": {
