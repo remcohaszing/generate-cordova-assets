@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/remcohaszing/generate-cordova-assets#readme",
   "dependencies": {
+    "is-svg": "^2.1.0",
     "jimp": "^0.2.27",
     "mkdirp-then": "^1.2.0",
     "pn": "^1.0.0",
