@@ -14,13 +14,8 @@
 
 
 const path = require('path');
-
-const fs = require('pn/fs');
-const map = require('lodash.map');
 const platforms = require('./lib/platforms');
-const processImage = require('./lib/process-image');
-const writeSafe = require('./lib/write-safe');
-const template = require('lodash.template');
+const generate = require('./lib/hook/generate');
 
 
 module.exports = (context) => {
@@ -28,43 +23,42 @@ module.exports = (context) => {
     ConfigParser,
     events
   } = context.requireCordovaModule('cordova-common');
+  const log = events.emit.bind(events);
+  const projectRoot = context.opts.projectRoot;
 
-  const config = new ConfigParser(path.resolve(context.opts.projectRoot, 'config.xml'));
+  const config = new ConfigParser(path.resolve(projectRoot, 'config.xml'));
 
   const backgroundColor = config.getPreference('IconBackgroundColor') || 'white';
   const iconSource = config.getPreference('IconSource');
 
-  const templateValues = {
+  const pathTemplateValues = {
     name: config.name()
   };
 
   return Promise.all(context.opts.cordova.platforms.map((platform) => {
     if (!(platform in platforms)) {
-      events.emit('warn', 'Skipping generation of icons and splash screens.');
+      log('warn', 'Skipping generation of icons and splash screens.');
       return null;
     }
-    events.emit('info', `Generating icons and splash screens for platform ${platform}`);
+    log('info', `Generating icons and splash screens for platform ${platform}`);
+    const { icons, splashScreens } = platforms[platform];
     return Promise.all([
-      Promise.all(map(platforms[platform].icons,
-        ({ width, height, transparent }, outputPath) => {
-          const fullPath = path.join('platforms', platform, template(outputPath)(templateValues));
-          const bgColor = !transparent && backgroundColor;
-          events.emit('verbose', `Generating ${fullPath}`);
-          return fs.readFile(iconSource)
-            .then(sourceBuffer => processImage(sourceBuffer, { width, height, bgColor }))
-            .then(buffer => writeSafe(fullPath, buffer));
-        }
-      )),
-      Promise.all(map(platforms[platform].splashScreens,
-        ({ width, height, transparent }, outputPath) => {
-          const fullPath = path.join('platforms', platform, template(outputPath)(templateValues));
-          const bgColor = !transparent && backgroundColor;
-          events.emit('verbose', `Generating ${fullPath}`);
-          return fs.readFile(iconSource)
-            .then(sourceBuffer => processImage(sourceBuffer, { width, height, bgColor }))
-            .then(buffer => writeSafe(fullPath, buffer));
-        }
-      ))
+      generate({
+        projectRoot,
+        log,
+        source: iconSource,
+        backgroundColor,
+        settings: icons,
+        pathTemplateValues
+      }),
+      generate({
+        projectRoot,
+        log,
+        source: iconSource,
+        backgroundColor,
+        settings: splashScreens,
+        pathTemplateValues
+      })
     ]);
   }));
 };
