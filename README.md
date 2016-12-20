@@ -18,6 +18,25 @@ npm install generate-cordova-assets --save
 
 ## Usage
 
+### Cordova Hook
+
+This project comes with a Cordova hook that generates pixel perfect icons and splash screens from one icon.
+
+This is best put in the `after_prepare` [hook](hooks). This means that the hook will overwrite images **after** Cordova has copied its default images.
+
+For more info, see the Cordova documentation about [icons](icons) and [splash screens](splashscreens).
+
+
+#### Preference configuration options
+
+| Name                | Description
+|---------------------|-------------
+| IconSource          | The source icon to read.
+| IconBackgroundColor | The color to use to fill the color for images that may not be transparent.
+
+
+#### Example
+
 Add the following configurations to the *config.xml* file in your Cordova project:
 
 ```xml
@@ -28,22 +47,15 @@ Add the following configurations to the *config.xml* file in your Cordova projec
 ```
 
 
-## Configuration options
+### CLI Tool
 
-### Preferences
+The CLI tool may be used to convert an icon to an output icon of a given width, height and background color. This may be useful to create assets for uploading to Google Play or the App Store.
 
-| Name                | Description
-|---------------------|-------------
-| IconSource          | The source icon to read.
-| IconBackgroundColor | The color to use to fill the color for images that may not be transparent.
+For options, run:
 
-### Hook
-
-This is best put in the `after_prepare` [hook](hooks). This means that the hook will overwrite images **after** Cordova has copied its default images.
-
-### Icons / Splashscreens
-
-No extra configuration is needed. The hook will automatically detect which icons and splash screens to generate from your *config.xml*. Just specify them normally as specified in the Cordova [icon](icons) and [splash screen](splashscreens) documentation.
+```
+./node_modules/.bin/process-icon --help
+```
 
 
 ## FAQ

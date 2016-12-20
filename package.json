@@ -24,7 +24,8 @@
     "mkdirp-then": "^1.2.0",
     "pn": "^1.0.0",
     "svg2png": "^4.1.0",
-    "tinycolor2": "^1.4.1"
+    "tinycolor2": "^1.4.1",
+    "yargs": "^6.5.0"
   },
   "devDependencies": {
     "eslint": "^3.12.1",
