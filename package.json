@@ -1,6 +1,6 @@
 {
   "name": "generate-cordova-assets",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Automatically generate assets for a Cordova based project.",
   "main": "hook.js",
   "bin": {
