@@ -58,6 +58,11 @@ For options, run:
 ```
 
 
+### NodeJS
+
+The NodeJS API may be used. However, it is not the main API and it is not guaranteed to stay the same in the forseeable future.
+
+
 ## FAQ
 
 ###### Why not any of the other hooks on npm?
