@@ -19,6 +19,8 @@
   "dependencies": {
     "is-svg": "^2.1.0",
     "jimp": "^0.2.27",
+    "lodash.map": "^4.6.0",
+    "lodash.template": "^4.4.0",
     "mkdirp-then": "^1.2.0",
     "pn": "^1.0.0",
     "svg2png": "^4.1.0",
