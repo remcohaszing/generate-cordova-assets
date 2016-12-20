@@ -43,7 +43,7 @@ Add the following configurations to the *config.xml* file in your Cordova projec
 <preference name="IconSource" value="www/icon.svg"/>
 <preference name="IconBackgroundColor" value="#eeeeee"/>
 
-<hook type="after_prepare" src="node_modules/generate-cordova-assets/generate-cordova-assets.js"/>
+<hook type="after_prepare" src="node_modules/generate-cordova-assets/hook.js"/>
 ```
 
 
