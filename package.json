@@ -3,6 +3,9 @@
   "version": "2.0.0",
   "description": "Automatically generate assets for a Cordova based project.",
   "main": "hook.js",
+  "bin": {
+    "process-icon": "bin/process-icon"
+  },
   "scripts": {
     "test": "eslint --max-warnings 0 ."
   },
