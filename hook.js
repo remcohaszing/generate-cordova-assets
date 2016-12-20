@@ -48,6 +48,7 @@ module.exports = (context) => {
         log,
         source: iconSource,
         backgroundColor,
+        platform,
         settings: icons,
         pathTemplateValues
       }),
@@ -56,6 +57,7 @@ module.exports = (context) => {
         log,
         source: iconSource,
         backgroundColor,
+        platform,
         settings: splashScreens,
         pathTemplateValues
       })
