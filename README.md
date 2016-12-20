@@ -12,7 +12,7 @@ This provides a Cordova hook which can automatically generate icons and splash s
 ## Installation
 
 ```sh
-npm install generate-cordova-assets --save
+npm install generate-cordova-assets --save-dev
 ```
 
 
