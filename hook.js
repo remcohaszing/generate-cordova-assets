@@ -29,7 +29,7 @@ module.exports = (context) => {
   const config = new ConfigParser(path.resolve(projectRoot, 'config.xml'));
 
   const backgroundColor = config.getPreference('IconBackgroundColor') || 'white';
-  const iconSource = config.getPreference('IconSource');
+  const iconSource = path.resolve(context.opts.projectRoot, config.getPreference('IconSource'));
 
   const pathTemplateValues = {
     name: config.name()

@@ -7,7 +7,9 @@
     "process-icon": "lib/bin/process-icon.js"
   },
   "scripts": {
-    "test": "eslint --max-warnings 0 ."
+    "test": "run-p -cl eslint mocha",
+    "eslint": "eslint --color --max-warnings 0 .",
+    "mocha": "mocha"
   },
   "author": "Remco Haszing <remcohaszing@gmail.com>",
   "license": "MIT",
@@ -31,8 +33,14 @@
     "yargs": "^8.0.2"
   },
   "devDependencies": {
+    "chai": "^4.1.1",
+    "chai-fs": "^1.0.0",
+    "cordova-common": "^2.0.3",
     "eslint": "^4.5.0",
     "eslint-config-airbnb-base": "^11.3.2",
-    "eslint-plugin-import": "^2.7.0"
+    "eslint-plugin-import": "^2.7.0",
+    "lodash.merge": "^4.6.0",
+    "mocha": "^3.5.0",
+    "npm-run-all": "^4.1.1"
   }
 }
