@@ -21,18 +21,18 @@
   "homepage": "https://github.com/remcohaszing/generate-cordova-assets#readme",
   "dependencies": {
     "is-svg": "^2.1.0",
-    "jimp": "^0.2.27",
+    "jimp": "^0.2.28",
     "lodash.map": "^4.6.0",
     "lodash.template": "^4.4.0",
     "mkdirp-then": "^1.2.0",
     "pn": "^1.0.0",
-    "svg2png": "^4.1.0",
+    "svg2png": "^4.1.1",
     "tinycolor2": "^1.4.1",
-    "yargs": "^6.5.0"
+    "yargs": "^8.0.2"
   },
   "devDependencies": {
-    "eslint": "^3.12.1",
-    "eslint-config-airbnb-base": "^11.0.0",
-    "eslint-plugin-import": "^2.2.0"
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint-plugin-import": "^2.7.0"
   }
 }
