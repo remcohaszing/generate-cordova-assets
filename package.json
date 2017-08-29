@@ -9,7 +9,7 @@
   "scripts": {
     "test": "run-p -cl eslint mocha",
     "eslint": "eslint --color --max-warnings 0 .",
-    "mocha": "mocha"
+    "mocha": "nyc mocha"
   },
   "author": "Remco Haszing <remcohaszing@gmail.com>",
   "license": "MIT",
@@ -27,6 +27,7 @@
     "lodash.map": "^4.6.0",
     "lodash.template": "^4.4.0",
     "mkdirp-then": "^1.2.0",
+    "nyc": "^11.1.0",
     "pn": "^1.0.0",
     "svg2png": "^4.1.1",
     "tinycolor2": "^1.4.1",
