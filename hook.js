@@ -24,18 +24,18 @@ module.exports = (context) => {
     events
   } = context.requireCordovaModule('cordova-common');
   const log = events.emit.bind(events);
-  const projectRoot = context.opts.projectRoot;
+  const { cordova, projectRoot } = context.opts;
 
   const config = new ConfigParser(path.resolve(projectRoot, 'config.xml'));
 
   const backgroundColor = config.getPreference('IconBackgroundColor') || 'white';
-  const iconSource = path.resolve(context.opts.projectRoot, config.getPreference('IconSource'));
+  const iconSource = path.resolve(projectRoot, config.getPreference('IconSource'));
 
   const pathTemplateValues = {
     name: config.name()
   };
 
-  return Promise.all(context.opts.cordova.platforms.map((platform) => {
+  return Promise.all(cordova.platforms.map((platform) => {
     if (!(platform in platforms)) {
       log('warn', 'Skipping generation of icons and splash screens.');
       return null;
